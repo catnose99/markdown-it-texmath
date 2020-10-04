@@ -288,7 +288,7 @@ texmath.rules = {
     inline: [
       {
         name: 'math_inline_double',
-        rex: /\${2}((?:\S)|(?:\S.*?\S))\${2}/gy,
+        rex: /\${2}(?!.*\]\(http)((?:\S)|(?:\S.*?\S))\${2}/gy,  // fixed so that the expression [$something](https://something.com/$example) is skipped.
         tmpl: '<section><eqn>$1</eqn></section>',
         tag: '$$',
         displayMode: true,
@@ -297,7 +297,7 @@ texmath.rules = {
       },
       {
         name: 'math_inline',
-        rex: /\$((?:\S)|(?:\S.*?\S))\$/gy,
+        rex: /\$(?!.*\]\(http)((?:\S)|(?:\S.*?\S))\$/gy, // fixed so that the expression [$something](https://something.com/$example) is skipped.
         tmpl: '<eq>$1</eq>',
         tag: '$',
         pre: texmath.$_pre,
