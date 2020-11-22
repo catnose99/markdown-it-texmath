@@ -297,7 +297,7 @@ texmath.rules = {
       },
       {
         name: 'math_inline',
-        rex: /\$((?:\S)|(?:\S(?!.*\]\(http).*?\S))\$/gy, // fixed so that the expression [$something](https://something.com/$example) is skipped.
+        rex: /\$((?:\S)|(?:\S(?!.*\]\(http.*\$.*\)).*?\S))\$/gy, // fixed so that the expression [$something](https://something.com/$example) is skipped. (?:\S(?!.*\]\(http.*\$.*\)) means somthing like "](https://hoge.com/$/hoge)"
         tmpl: '<eq>$1</eq>',
         tag: '$',
         pre: texmath.$_pre,
